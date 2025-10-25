@@ -24,61 +24,6 @@
           </div>
           <h1 class="game-title">{{ game.title }}</h1>
           <p class="game-subtitle">{{ game.description }}</p>
-
-          <div class="game-actions">
-            <a
-              v-if="game.browserPlayable && game.gameUrl"
-              :href="game.gameUrl"
-              target="_blank"
-              class="btn btn-primary"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Play in Browser
-            </a>
-            <a
-              v-else-if="game.gameUrl"
-              :href="game.gameUrl"
-              target="_blank"
-              class="btn btn-primary"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                />
-              </svg>
-              Download Game
-            </a>
-            <a
-              v-if="game.githubUrl"
-              :href="game.githubUrl"
-              target="_blank"
-              class="btn btn-outline"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.300 24 12c0-6.627-5.373-12-12-12z"
-                />
-              </svg>
-              View on GitHub
-            </a>
-          </div>
         </header>
 
         <!-- Game Image -->
@@ -236,37 +181,12 @@
                   </span>
                 </div>
               </div>
-            </div>
-
-            <!-- Links -->
-            <div v-if="game.gameUrl || game.githubUrl" class="sidebar-card">
-              <h3>Links</h3>
-              <div class="links-list">
-                <a
-                  v-if="game.gameUrl"
-                  :href="game.gameUrl"
-                  target="_blank"
-                  class="link-item"
-                >
+              <div v-if="game.githubUrl" class="detail-item">
+                <span class="label">Source:</span>
+                <a :href="game.githubUrl" target="_blank" class="source-link">
                   <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  Play Game
-                </a>
-                <a
-                  v-if="game.githubUrl"
-                  :href="game.githubUrl"
-                  target="_blank"
-                  class="link-item"
-                >
-                  <svg
-                    width="20"
-                    height="20"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -274,7 +194,7 @@
                       d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.300 24 12c0-6.627-5.373-12-12-12z"
                     />
                   </svg>
-                  View Source
+                  View on GitHub
                 </a>
               </div>
             </div>
@@ -340,7 +260,8 @@ export default {
     });
 
     const formatDate = (dateString) => {
-      return new Date(dateString).toLocaleDateString("en-US", {
+      const [year, month, day] = dateString.split("-");
+      return new Date(year, month - 1, day).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -835,6 +756,23 @@ export default {
 .value {
   color: var(--text-primary);
   font-weight: 500;
+}
+
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.source-link:hover {
+  color: var(--accent-blue-hover);
+}
+
+.source-link svg {
+  flex-shrink: 0;
 }
 
 .status.released {

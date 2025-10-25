@@ -215,7 +215,8 @@ export default {
     const recentWritings = computed(() => writingStore.recentWritings);
 
     const formatDate = (dateString) => {
-      return new Date(dateString).toLocaleDateString("en-US", {
+      const [year, month, day] = dateString.split("-");
+      return new Date(year, month - 1, day).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
