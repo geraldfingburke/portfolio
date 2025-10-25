@@ -86,8 +86,10 @@
                 <span v-if="game.status === 'released'" class="badge released"
                   >Released</span
                 >
-                <span v-if="game.status === 'ongoing'" class="badge ongoing"
-                  >Ongoing</span
+                <span
+                  v-if="game.status === 'in development'"
+                  class="badge in-development"
+                  >In Development</span
                 >
               </div>
             </div>
@@ -427,7 +429,7 @@ export default {
   color: white;
 }
 
-.badge.ongoing {
+.badge.in-development {
   background: #e67e22;
   color: white;
 }

@@ -37,7 +37,7 @@
         <div class="hero-image">
           <div class="image-placeholder">
             <img
-              src="../assets/selfie.jpg"
+              src="../assets/Branding/Headshots/selfie.jpg"
               alt="a self portrait of Gerald Burke"
             />
           </div>

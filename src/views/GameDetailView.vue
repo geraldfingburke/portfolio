@@ -18,8 +18,10 @@
             <span v-if="game.status === 'released'" class="badge released"
               >Released</span
             >
-            <span v-if="game.status === 'ongoing'" class="badge ongoing"
-              >Ongoing</span
+            <span
+              v-if="game.status === 'in development'"
+              class="badge in-development"
+              >In Development</span
             >
           </div>
           <h1 class="game-title">{{ game.title }}</h1>
@@ -37,9 +39,7 @@
           <div class="game-content">
             <section class="game-section">
               <h2>About This Game</h2>
-              <div class="game-description">
-                {{ game.longDescription }}
-              </div>
+              <div class="game-description" v-html="game.longDescription"></div>
             </section>
 
             <!-- Widget Section -->
@@ -271,7 +271,7 @@ export default {
     const formatStatus = (status) => {
       const statusMap = {
         released: "Released",
-        ongoing: "Ongoing",
+        "in development": "In Development",
         development: "In Development",
       };
       return statusMap[status] || status;
@@ -416,7 +416,7 @@ export default {
   color: white;
 }
 
-.badge.ongoing {
+.badge.in-development {
   background: #e67e22;
   color: white;
 }
@@ -451,9 +451,10 @@ export default {
 
 .game-screenshot {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  max-height: 600px;
+  object-fit: contain;
   display: block;
+  background: var(--bg-secondary);
 }
 
 .image-placeholder {
@@ -779,7 +780,7 @@ export default {
   color: #27ae60;
 }
 
-.status.ongoing {
+.status.in-development {
   color: #e67e22;
 }
 

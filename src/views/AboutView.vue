@@ -1,728 +1,472 @@
 <template>
   <div class="about-view">
     <div class="container">
-      <!-- Hero Section -->
-      <section class="about-hero">
-        <div class="hero-content">
-          <div class="hero-image">
-            <div class="image-placeholder">
-              <svg width="250" height="250" viewBox="0 0 250 250" fill="none">
-                <circle
-                  cx="125"
-                  cy="125"
-                  r="120"
-                  stroke="#3498db"
-                  stroke-width="3"
-                  fill="#f8f9fa"
+      <h1 class="page-title">My Journey</h1>
+
+      <div class="cv-notice">
+        <p>
+          If you're here for my professional summary, grab my CV
+          <a href="#" class="cv-link">here</a>
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div
+          v-for="(event, index) in timelineEvents"
+          :key="event.id"
+          class="timeline-item"
+          :class="{
+            expanded: event.expanded,
+            left: index % 2 === 0,
+            right: index % 2 === 1,
+          }"
+        >
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-year">{{ event.year }}</h3>
+              <h2 class="timeline-title">{{ event.title }}</h2>
+            </div>
+            <transition name="expand">
+              <div v-if="event.expanded" class="timeline-details">
+                <img
+                  v-if="event.image"
+                  :src="event.image"
+                  :alt="event.title"
+                  class="timeline-image"
                 />
-                <text
-                  x="125"
-                  y="135"
-                  text-anchor="middle"
-                  fill="#2c3e50"
-                  font-size="20"
-                  font-weight="600"
-                >
-                  Your Photo
-                </text>
-              </svg>
-            </div>
-          </div>
-          <div class="hero-text">
-            <h1>About Gerald Burke</h1>
-            <p class="hero-subtitle">
-              Writer, Educator & Game/Web/Software Developer
-            </p>
-            <p class="hero-description">
-              I'm Gerald Burke, living and working in the Appalachian Mountains
-              of Northeast Tennessee. I combine my passions for writing,
-              education, and technology to create interactive stories,
-              educational tools, and digital humanities projects that explore
-              the intersection of narrative and technology.
-            </p>
-            <div class="hero-actions">
-              <a
-                href="https://geraldburke.com"
-                class="btn btn-primary"
-                target="_blank"
-              >
-                Visit My Current Site
-              </a>
-              <router-link to="/portfolio" class="btn btn-outline">
-                View My Projects
-              </router-link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section class="skills-section">
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <div class="category-icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </div>
-            <h3>Frontend Development</h3>
-            <p>
-              Creating responsive, interactive user interfaces with modern
-              frameworks and libraries.
-            </p>
-            <div class="skill-tags">
-              <span>Vue.js</span>
-              <span>React</span>
-              <span>JavaScript</span>
-              <span>TypeScript</span>
-              <span>CSS3</span>
-              <span>HTML5</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <h3>Backend Development</h3>
-            <p>
-              Building robust server-side applications, APIs, and database
-              systems.
-            </p>
-            <div class="skill-tags">
-              <span>Node.js</span>
-              <span>Express</span>
-              <span>MongoDB</span>
-              <span>PostgreSQL</span>
-              <span>REST APIs</span>
-              <span>GraphQL</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <div class="category-icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-              </svg>
-            </div>
-            <h3>Tools & Workflow</h3>
-            <p>
-              Utilizing modern development tools and best practices for
-              efficient workflows.
-            </p>
-            <div class="skill-tags">
-              <span>Git</span>
-              <span>Docker</span>
-              <span>AWS</span>
-              <span>Figma</span>
-              <span>Webpack</span>
-              <span>Vite</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experience Timeline -->
-      <section class="experience-section">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-date">2023 - Present</div>
-              <h3>Senior Full-Stack Developer</h3>
-              <h4>Your Company</h4>
-              <p>
-                Leading development of modern web applications using Vue.js,
-                Node.js, and cloud technologies. Responsible for architecture
-                decisions, code reviews, and mentoring junior developers.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-date">2021 - 2023</div>
-              <h3>Full-Stack Developer</h3>
-              <h4>Previous Company</h4>
-              <p>
-                Developed and maintained multiple client projects using various
-                technologies. Collaborated with design teams to implement
-                pixel-perfect user interfaces.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-date">2020 - 2021</div>
-              <h3>Frontend Developer</h3>
-              <h4>Startup Company</h4>
-              <p>
-                Built responsive web applications and contributed to the
-                company's main product. Focused on performance optimization and
-                user experience improvements.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Values Section -->
-      <section class="values-section">
-        <h2 class="section-title">What I Value</h2>
-        <div class="values-grid">
-          <div class="value-item">
-            <div class="value-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M9 12l2 2 4-4" />
-                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" />
-                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" />
-                <path d="M3 12h6m6 0h6" />
-              </svg>
-            </div>
-            <h3>Quality Code</h3>
-            <p>
-              Writing clean, maintainable, and well-documented code that follows
-              best practices and industry standards.
-            </p>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                />
-              </svg>
-            </div>
-            <h3>User Experience</h3>
-            <p>
-              Prioritizing intuitive design and seamless interactions to create
-              applications that users love to use.
-            </p>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <h3>Collaboration</h3>
-            <p>
-              Working effectively with teams, sharing knowledge, and
-              contributing to a positive development culture.
-            </p>
-          </div>
-
-          <div class="value-item">
-            <div class="value-icon">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-                />
-                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-                <path d="M12 11h4" />
-                <path d="M12 16h4" />
-                <path d="M8 11h.01" />
-                <path d="M8 16h.01" />
-              </svg>
-            </div>
-            <h3>Continuous Learning</h3>
-            <p>
-              Staying up-to-date with the latest technologies and continuously
-              improving skills and knowledge.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="contact-section">
-        <div class="contact-content">
-          <h2>Let's Work Together</h2>
-          <p>
-            I'm always interested in new opportunities and exciting projects.
-            Whether you have a question or just want to say hi, feel free to
-            reach out!
-          </p>
-
-          <div class="contact-methods">
-            <a href="mailto:your.email@example.com" class="contact-method">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                />
-              </svg>
-              <div>
-                <h4>Email</h4>
-                <p>your.email@example.com</p>
+                <p class="timeline-description">{{ event.description }}</p>
               </div>
-            </a>
-
-            <a
-              href="https://linkedin.com/in/yourprofile"
-              class="contact-method"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                />
-              </svg>
-              <div>
-                <h4>LinkedIn</h4>
-                <p>/in/yourprofile</p>
-              </div>
-            </a>
-
-            <a href="https://github.com/yourusername" class="contact-method">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
-                />
-              </svg>
-              <div>
-                <h4>GitHub</h4>
-                <p>/yourusername</p>
-              </div>
-            </a>
+            </transition>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "AboutView",
-};
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+import img1 from "@/assets/MyJourney/young-gerald.jpg";
+import img2 from "@/assets/MyJourney/2p2s.png";
+import img3 from "@/assets/MyJourney/adulting.jpg";
+import img4 from "@/assets/MyJourney/college-1.jpg";
+import img5 from "@/assets/MyJourney/trigamedev.jpg";
+import img6 from "@/assets/MyJourney/college-2.jpg";
+import img7 from "@/assets/MyJourney/bis.jpg";
+import img8 from "@/assets/MyJourney/professor.jpg";
+import img9 from "@/assets/MyJourney/grind.jpg";
+
+const timelineEvents = ref([
+  {
+    id: 1,
+    year: "1992-2006",
+    title: "Young Gerald",
+    description:
+      "I started making games on pen and paper at a very young age. I was a voracious reader and an unstoppable writer. No one that knew me then is surprised by what I'm up to now.",
+    image: img1,
+    expanded: true,
+  },
+  {
+    id: 2,
+    year: "2006-2010",
+    title: "Teen Years",
+    description:
+      "I was an absolutely insufferable teen. During this period, I mostly gave up on various hobbies for the sake of playing music. You can actually read that story in my writing section, 'A Brief History of My Shitty Bands'.",
+    image: img2,
+    expanded: true,
+  },
+  {
+    id: 3,
+    year: "2010-2014",
+    title: "Let's Adulting",
+    description:
+      "As soon as I hit 18, I moved to Tennessee and married the first person I met. I worked a series of retail and warehouse gigs and had my first two children during this time.",
+    image: img3,
+    expanded: true,
+  },
+  {
+    id: 4,
+    year: "2014-2016",
+    title: "Back to School",
+    description:
+      "I loved games, so I wanted to learn how to make them. I enrolled at a local university and studied Digital Media. I spent two years questioning my major, mismanaging my time, and generally flunking out before officially resigning in 2016. I was now both a high school and college dropout with two kids and no plan.",
+    image: img4,
+    expanded: true,
+  },
+  {
+    id: 5,
+    year: "2016-2018",
+    title: "Figuring It Out",
+    description:
+      "I decided that I wanted to do make games, like, actually make them. School didn't really teach me anything about game development, so I started teaching myself. I worked a steady job and put all my spare time into figuring out this game stuff. This is when I started the Tri-Cities Game Developers. Now the much pithier TriGameDev.",
+    image: img5,
+    expanded: true,
+  },
+  {
+    id: 6,
+    year: "2018-2020",
+    title: "Back to School... Again",
+    description:
+      "If you want to make games, you pretty much have to learn to code. In teaching myself programming, I fell head over heels in love. The raw creative power of willing things into a digital existence was and remains intoxicating to me. I decided to go back and actually study programming. While maintining a full-time job, two young children, a failing marriage, and my own hobbies, I spent two years hammering out an Associate's in Computer Programming. I finished in 2020, a year that will be remembered for nothing in particular.",
+    image: img6,
+    expanded: true,
+  },
+  {
+    id: 7,
+    year: "2020-2022",
+    title: "Devving and Jeffing",
+    description:
+      "Right out of school, I landed a junior web gig at a local software firm. I spent a few years there learning the ropes and getting my feet wet with technologies and processes that were new to me. I met and worked with a lot of great people and thoroughly enjoyed my introduction to the industry.",
+    image: img7,
+    expanded: true,
+  },
+  {
+    id: 8,
+    year: "2022-2025",
+    title: "Shifting into Education",
+    description:
+      "My second foray in formal education was much more successful than my first. From my graduation in 2020, I continued pursuing my Bachelor's and was accepted into the Master's program at Georgia Tech. My ultimate goal was to move into teaching. In 2023, I finally got that opportunity and was offered an instructor position at my alma mater. I loved the experience there. I've never experienced anything quite as rewarding as educating the next generation of developers. But I still had rubber on the wheels and I was itching to get back to active development.",
+    image: img8,
+    expanded: true,
+  },
+  {
+    id: 9,
+    year: "2025-Present",
+    title: "Back to the Grind",
+    description:
+      "There's nothing that quite matches the grind of active development. It's a feeling that I missed dearly while teaching. I went back into full time development and intend to stay for the foreseeable future.",
+    image: img9,
+    expanded: true,
+  },
+]);
+
+// Intersection Observer for scroll animations
+let observer;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px",
+    }
+  );
+
+  // Observe all timeline items
+  const timelineItems = document.querySelectorAll(".timeline-item");
+  timelineItems.forEach((item) => observer.observe(item));
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 </script>
 
 <style scoped>
 .about-view {
-  padding: 2rem 0 4rem;
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-/* Hero Section */
-.about-hero {
-  margin-bottom: 6rem;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.hero-content {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-}
-
-.image-placeholder {
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 1rem;
-}
-
-.hero-text h1 {
+.page-title {
   font-size: 3rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: #3498db;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+.cv-notice {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
 }
 
-.hero-description {
+.cv-notice p {
   font-size: 1.125rem;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  max-width: 500px;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 1rem;
+.cv-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* Skills Section */
-.skills-section {
-  margin-bottom: 6rem;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
-}
-
-.skill-category {
-  text-align: center;
-  padding: 2rem;
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.skill-category:hover {
-  transform: translateY(-5px);
-}
-
-.category-icon {
-  color: #3498db;
-  margin-bottom: 1.5rem;
-}
-
-.skill-category h3 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.skill-category p {
-  color: #555;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.skill-tags span {
-  background: #ecf0f1;
-  color: #555;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.skill-tags span:hover {
-  background: #3498db;
-  color: white;
-}
-
-/* Experience Timeline */
-.experience-section {
-  margin-bottom: 6rem;
+.cv-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 .timeline {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  padding: 2rem 0;
+  min-height: 100vh;
 }
 
 .timeline::before {
   content: "";
   position: absolute;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: #3498db;
+  width: 3px;
+  background: var(--primary-color);
+  z-index: 0;
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 60px;
   margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Animation states for left items */
+.timeline-item.left {
+  justify-content: flex-start;
+  transform: translateX(-100px);
+}
+
+.timeline-item.left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animation states for right items */
+.timeline-item.right {
+  justify-content: flex-end;
+  transform: translateX(100px);
+}
+
+.timeline-item.right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Content positioning */
+.timeline-item.left .timeline-content {
+  margin-right: auto;
+  margin-left: 0;
+  width: calc(50% - 40px);
+}
+
+.timeline-item.left .timeline-marker {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item.right .timeline-content {
+  margin-left: auto;
+  margin-right: 0;
+  width: calc(50% - 40px);
+}
+
+.timeline-item.right .timeline-marker {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .timeline-marker {
   position: absolute;
-  left: 10px;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  background: #3498db;
-  border: 4px solid white;
+  top: 8px;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-color);
+  border: 4px solid var(--bg-primary);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #3498db;
+  box-shadow: 0 0 0 4px var(--primary-color);
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
-.timeline-date {
-  color: #3498db;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+.timeline-item.expanded .timeline-marker {
+  background: var(--primary-hover);
+  box-shadow: 0 0 0 4px var(--primary-hover);
 }
 
-.timeline-content h3 {
-  color: #2c3e50;
-  margin-bottom: 0.25rem;
-  font-size: 1.25rem;
+.timeline-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.timeline-content h4 {
-  color: #7f8c8d;
-  margin-bottom: 0.75rem;
-  font-weight: 500;
+.timeline-content:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-content p {
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Values Section */
-.values-section {
-  background: #f8f9fa;
-  padding: 4rem 0;
-  margin-bottom: 6rem;
-  border-radius: 2rem;
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.value-item {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.value-icon {
-  color: #3498db;
-  margin-bottom: 1rem;
-}
-
-.value-item h3 {
-  color: #2c3e50;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
-
-.value-item p {
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Contact Section */
-.contact-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 4rem 2rem;
-  border-radius: 2rem;
-  text-align: center;
-}
-
-.contact-content h2 {
-  color: white;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-}
-
-.contact-content > p {
-  font-size: 1.125rem;
-  margin-bottom: 3rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-methods {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.contact-method {
+.timeline-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
-.contact-method:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  color: white;
-}
-
-.contact-method svg {
-  flex-shrink: 0;
-}
-
-.contact-method h4 {
-  color: white;
-  margin-bottom: 0.25rem;
-  font-size: 1rem;
-}
-
-.contact-method p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+.timeline-year {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
   margin: 0;
+  min-width: 80px;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.expand-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.timeline-item.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+.timeline-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.timeline-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.timeline-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Expand Transition */
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.expand-enter-to,
+.expand-leave-from {
+  opacity: 1;
+  max-height: 1000px;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .hero-text h1 {
+  .page-title {
     font-size: 2rem;
   }
 
-  .hero-subtitle {
-    font-size: 1.25rem;
+  .cv-notice {
+    padding: 1rem;
   }
 
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .cv-notice p {
+    font-size: 1rem;
   }
 
   .timeline::before {
-    left: 15px;
+    left: 20px;
+    transform: none;
   }
 
   .timeline-item {
-    padding-left: 50px;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+    margin-right: 0;
+  }
+
+  .timeline-item.left .timeline-marker,
+  .timeline-item.right .timeline-marker {
+    left: 8px;
+    transform: none;
   }
 
   .timeline-marker {
-    left: 5px;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
 
-  .values-grid {
-    grid-template-columns: 1fr;
+  .timeline-content {
+    padding: 1rem;
   }
 
-  .contact-methods {
-    grid-template-columns: 1fr;
+  .timeline-header {
+    flex-wrap: wrap;
   }
 
-  .contact-method {
-    text-align: left;
+  .timeline-year {
+    min-width: auto;
+    font-size: 1rem;
+  }
+
+  .timeline-title {
+    font-size: 1.25rem;
+    flex-basis: 100%;
+  }
+
+  .expand-icon {
+    font-size: 1.5rem;
+  }
+
+  .timeline-description {
+    font-size: 1rem;
   }
 }
 </style>

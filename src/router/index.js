@@ -44,6 +44,11 @@ const routes = [
     name: "About",
     component: () => import("@/views/AboutView.vue"),
   },
+  {
+    path: "/random",
+    name: "Random",
+    component: () => import("@/views/RandomView.vue"),
+  },
 ];
 
 const router = createRouter({

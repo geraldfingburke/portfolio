@@ -44,6 +44,9 @@
             <router-link to="/about" class="nav-link" @click="closeMobileMenu">
               About
             </router-link>
+            <router-link to="/random" class="nav-link" @click="closeMobileMenu">
+              Random
+            </router-link>
           </div>
         </div>
       </div>
