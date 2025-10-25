@@ -97,6 +97,11 @@
               </div>
             </section>
 
+            <!-- Widget Section -->
+            <section v-if="game.widgetHtml" class="game-section">
+              <div class="game-widget" v-html="game.widgetHtml"></div>
+            </section>
+
             <!-- Browser Playable Game Embed -->
             <section
               v-if="game.browserPlayable && game.gameUrl"
@@ -670,6 +675,20 @@ export default {
   color: var(--text-secondary);
   line-height: 1.8;
   font-size: 1.1rem;
+}
+
+/* Widget Section */
+.game-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.game-widget iframe {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px var(--shadow-dark);
 }
 
 /* Tags */

@@ -67,6 +67,8 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: jrpgImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/jrpg-the-game",
+      widgetHtml:
+        '<iframe frameborder="0" src="https://itch.io/embed/1017863?linkback=true&amp;border_width=2&amp;bg_color=21262d&amp;fg_color=f0f6fc&amp;link_color=58a6ff&amp;border_color=30363d" width="554" height="169"><a href="https://gerald-burke.itch.io/jrpg-the-game">JRPG: The Game by Gerald Burke</a></iframe>',
       browserPlayable: false,
       featured: true,
       releaseDate: "2023-08-20",
