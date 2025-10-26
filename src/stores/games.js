@@ -40,6 +40,7 @@ import spelunkKingScreenshot from "@/assets/Games/spelunk_king/Screenshots/spelu
 import jrpgScreenshot1 from "@/assets/Games/jrpg_the_game/Screenshots/1.png";
 import jrpgScreenshot2 from "@/assets/Games/jrpg_the_game/Screenshots/2.png";
 import jrpgScreenshot3 from "@/assets/Games/jrpg_the_game/Screenshots/3.png";
+import populousImage from "@/assets/Games/deus/Screenshots/populous.png";
 
 export const useGamesStore = defineStore("games", () => {
   // State - Gerald Burke's Game Development Projects
@@ -155,51 +156,87 @@ export const useGamesStore = defineStore("games", () => {
     {
       id: 7,
       title: "Cubegenics",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A Eugenics Simulator for the Whole Family!",
-      longDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      description: "A Eugenics Simulator for the Whole Family!",
+      longDescription: `
+        <h3>The Game:</h3>
+        <p>This was built as a submission for <a href='https://itch.io/jam/mini-jam-186-evolution' target='_blank' rel='noopener noreferrer'>Mini Jam 186</a>.</p>
+        <p>The theme was 'Evolution' and I knew from the beginning I wanted to do something with genetics.</p>
+        <p>When the limitation of "Failure is progress" was announced, the idea became more clear to me. You would try, through trial and error, to use selective breeding to achieve a result. The problem is eugenics are gross and bad. So I obfuscated the grossness and badness by making everyone a cube!</p>
+        <p>Do not worry, no matter how much they scream, the cubes do not feel pain.</p>
+        <h3>The Story:</h3>
+        <p>You are a human geneticist. You have been transported to a planet inhabited by sentient cubes by a fringe organization called 'The Order of the Cube'.</p>
+        <p>The Order believes in a prophecy that a 'Master Cube' will be born and usher in an era of everlasting peace and prosperity. The problem is, they're tired of waiting. They have brought you in on the basis of a paper that you wrote entitled 'The Ethics of Eugenics' in which you played devil's advocate for the concept.</p>
+        <p>You are effectively a prisoner of the Order. You cannot go home until you have delivered a specimen matching the prophecy. May God have mercy on your soul...</p>
+        <div style='text-align:center; margin:2rem 0;'>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/NcfU7Ygj8Yo?si=-NZ2kamaam-3ZtcC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style='max-width:100%; border-radius:0.5rem; border:1px solid #30363d;'></iframe>
+        </div>
+      `,
       tags: ["Simulation", "Web", "Godot", "Game Jam", "3D"],
       imageUrl: cubegenicsImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/cubegenics",
-      embedUrl: "https://gerald-burke.itch.io/cubegenics?embed=true",
+      embedUrl: "https://html-classic.itch.zone/html/13945939/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2025-01-01",
+      releaseDate: "2025-06-08",
       status: "released",
     },
     {
       id: 8,
       title: "Cromancer",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Necromancy meets agriculture in this unique simulation.",
-      longDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Collect souls for you necromancer master in this short puzzle/adventure game",
+      longDescription: `
+        <p>Built for the <a href='https://itch.io/jam/micro-jam-040' target='_blank' rel='noopener noreferrer'>Microjam #40</a></p>
+        <p>The theme was magic, with a prerequisite of "Death is your friend"</p>
+        <p>I opted to build a short puzzle/adventure game about a necromancer's apprentice</p>
+        <p>There are 5 unique endings, see if you can get them all!</p>
+        <h3>Controls:</h3>
+        <p>WASD or Arrow Keys + Mouse</p>
+        <h3>Credits:</h3>
+        <p>This was a solo endeavor, leveraging the following assets:</p>
+        <p>The excellent 0x72 <a href='https://0x72.itch.io/dungeontileset-ii' target='_blank' rel='noopener noreferrer'>Dungeon Tiles</a></p>
+        <p>Eduard Wiiralt's Põrgu(Hell), courtesy of WikiMedia Commons</p>
+        <p>And the track <a href='https://freemusicarchive.org/music/aldous-ichnite/submechanophobia/pressure-hull/' target='_blank' rel='noopener noreferrer'>Pressure Hull by Aldous Ichnite</a></p>
+      `,
       tags: ["Adventure", "Web", "Godot", "Game Jam", "2D"],
       imageUrl: cromancerImage,
-      githubUrl: null,
+      githubUrl: "https://github.com/geraldfingburke/cromancer",
       gameUrl: "https://gerald-burke.itch.io/cromancer",
-      browserPlayable: false,
+      embedUrl: "https://html.itch.zone/html/13878609/index.html",
+      browserPlayable: true,
       featured: false,
-      releaseDate: "2025-01-01",
+      releaseDate: "2025-06-01",
       status: "released",
     },
     {
       id: 9,
       title: "Deus",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A Simple God-Game Style Simulation.",
-      longDescription:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      description: "A Simple God Game Style Sim",
+      longDescription: `
+        <p>Built for the <a href='https://itch.io/jam/gamedevtv-jam-2025' target='_blank' rel='noopener noreferrer'>GameDev.tv Game Jam 2025</a></p>
+        <p>The theme was 'Tiny World'. I had, in my head, a vision of a god game where you would watch a small world full of autonomous agents grow and evolve, choosing to intervene for good or for ill. The obvious inspirations here came from the progenitor of the genre, our boy PMo.</p>
+        <div style='text-align:center; margin:2rem 0;'>
+          <img src='${populousImage}' alt='Populous' style='max-width:100%; border-radius:0.5rem; border:1px solid #30363d;' />
+        </div>
+        <p>Another, less obvious bit of inspiration came from a <a href='https://www.youtube.com/watch?v=jyJpO0HdqCg' target='_blank' rel='noopener noreferrer'>talk</a> by Dave Mark I attended at the 2019 rendition of the East Coast Games Conference. One of the themes of the talk was building robust NPCs in order to lean on emergent behavior to tell deeper stories.</p>
+        <p>This inspiration, and my long running desire to write a project that incorporated these things, matched up perfectly with the theme of the jam. Unfortunately, I did exactly three things wrong.</p>
+        <h3>1. I used a new engine</h3>
+        <p>This one is listed first because it had the least amount of impact on the failure of the project. I picked up Phaser to experiment with a bit before the jam. When it came time for the jam, I thought it would be a good fit for the project. While it was unfamiliar, in reality Phaser is primarily a set of build tools for the web stack. It's kind of like a game-oriented Electron or NW.js. I didn't have direct experience in the framework, but most of my professional experience was in all of the technologies within the framework.</p>
+        <h3>2. I used it as an experiment for 'vibe coding'</h3>
+        <p>We had just gotten a license for GitHub Copilot at work and I was still experimenting with Agent mode. Before then, my encounters with GenAI in development were largely rubber duck debugging with a 'colleague' that swallowed every stack exchange question and answer. I ended up paying the premium to get Copilot for my personal account. I was excited about the tools, but inexperienced. I used them poorly, relied on them too heavily, and produced something that was less than stellar.</p>
+        <h3>3. I waited until the last day of a weeks-long jam</h3>
+        <p>Yep. I saved this for last because it had the biggest impact on this game not really being what I set out to make it. I could have worked through all of the other issues with just a little bit of time.</p>
+        <p>The result was a broken, wonky version of the ideas I had set out to execute. I really want to revisit this idea later, because I can feel something there. Unfortunately, this was not it.</p>
+      `,
       tags: ["Simulation", "Web", "Phaser", "Game Jam", "2D"],
       imageUrl: deusImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/deus",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/13791552/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2025-01-01",
+      releaseDate: "2025-05-25",
       status: "released",
     },
     {
@@ -213,10 +250,10 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: feederImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/feeder",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/13098067/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2025-01-01",
+      releaseDate: "2025-03-16",
       status: "released",
     },
     {
@@ -228,11 +265,11 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Racing", "Windows", "Godot", "Game Jam", "3D"],
       imageUrl: demoDerbyImage,
-      githubUrl: null,
+      githubUrl: "https://github.com/geraldfingburke/secret-santa-jam-2024",
       gameUrl: "https://gerald-burke.itch.io/demo-derby-proof-of-concept",
       browserPlayable: false,
       featured: false,
-      releaseDate: "2024-12-25",
+      releaseDate: "2024-12-22",
       status: "released",
     },
     {
@@ -246,10 +283,11 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: pokemonImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/whos-that-pokemon",
-      embedUrl: null,
+      embedUrl:
+        "https://html-classic.itch.zone/html/12199507/Who's That Pokemon/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2024-06-01",
+      releaseDate: "2024-12-08",
       status: "released",
     },
     {
@@ -261,12 +299,12 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Adventure", "Web", "Godot", "Game Jam", "2D"],
       imageUrl: depthsImage,
-      githubUrl: null,
+      githubUrl: "https://github.com/geraldfingburke/simplicity-jam-2",
       gameUrl: "https://gerald-burke.itch.io/the-depths",
-      embedUrl: null,
+      embedUrl: "https://html.itch.zone/html/12254450/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2024-03-01",
+      releaseDate: "2024-12-07",
       status: "released",
     },
     {
@@ -278,11 +316,11 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Adventure", "Windows", "Custom Engine", "Text-Based"],
       imageUrl: remainIndoorsImage,
-      githubUrl: null,
+      githubUrl: "https://github.com/geraldfingburke/NEAdventure",
       gameUrl: "https://gerald-burke.itch.io/remain-indoors",
       browserPlayable: false,
       featured: false,
-      releaseDate: "2019-10-01",
+      releaseDate: "2019-04-27",
       status: "released",
     },
     {
@@ -294,9 +332,10 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Action", "Web", "Unity", "Game Jam", "2D"],
       imageUrl: timegunImage,
-      githubUrl: null,
-      gameUrl: "https://gerald-burke.itch.io/cubegenics",
-      embedUrl: "https://gerald-burke.itch.io/cubegenics?embed=true",
+      githubUrl: "https://github.com/geraldfingburke/TimeGun",
+      gameUrl: "https://gerald-burke.itch.io/timegun",
+      embedUrl:
+        "https://html-classic.itch.zone/html/869476/index.html?v=1542802581",
       browserPlayable: true,
       featured: false,
       releaseDate: "2018-05-01",
@@ -313,10 +352,10 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: hoursImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/12-hours",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/5551333/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2022-08-01",
+      releaseDate: "2022-04-05",
       status: "released",
     },
     {
@@ -343,12 +382,13 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Adventure", "Windows", "Unity", "Ludum Dare", "3D"],
       imageUrl: dietodayImage,
-      githubUrl: null,
+      githubUrl:
+        "https://github.com/geraldfingburke/you-are-going-to-die-today",
       gameUrl: "https://gerald-burke.itch.io/you-are-going-to-die-today",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/2798885/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2020-10-01",
+      releaseDate: "2020-10-05",
       status: "released",
     },
     {
@@ -362,10 +402,10 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: iceAgeImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/ice-age",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/2428935/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2020-05-01",
+      releaseDate: "2020-07-01",
       status: "released",
     },
     {
@@ -379,10 +419,10 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: sadLibsImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/sad-libs-game",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/7352391/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2023-03-01",
+      releaseDate: "2023-02-15",
       status: "released",
     },
     {
@@ -396,10 +436,11 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: alienLabImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/alien-lab-assistant-simulator",
-      embedUrl: null,
+      embedUrl:
+        "https://html-classic.itch.zone/html/425980/index.html?v=1542804339",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2017-08-01",
+      releaseDate: "2017-03-23",
       status: "released",
     },
     {
@@ -411,13 +452,12 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       tags: ["Simulation", "Web", "Unity", "Game Jam", "2D"],
       imageUrl: anxietySimImage,
-      githubUrl:
-        "https://gerald-burke.itch.io/back-to-school-anxiety-simulator-pro",
+      githubUrl: "https://github.com/geraldfingburke/Mini-Jam-9",
       gameUrl:
-        "https://gerald-burke.itch.io/back-to-school-anxiety-simulator-pro",
-      browserPlayable: false,
+        "https://html-classic.itch.zone/html/1025019/index.html?v=1542784695",
+      browserPlayable: true,
       featured: false,
-      releaseDate: "2019-08-01",
+      releaseDate: "2018-08-26",
       status: "released",
     },
     {
@@ -431,10 +471,11 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: saltImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/could-you-pass-the-salt-please",
-      embedUrl: null,
+      embedUrl:
+        "https://html-classic.itch.zone/html/419652/index.html?v=1542791971",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2017-06-01",
+      releaseDate: "2017-03-15",
       status: "released",
     },
     {
@@ -447,10 +488,11 @@ export const useGamesStore = defineStore("games", () => {
       tags: ["Action", "Web", "Unity", "Ludum Dare", "2D"],
       imageUrl: cyclovaniaImage,
       githubUrl: "https://arendev.itch.io/cyclevania",
-      gameUrl: "https://arendev.itch.io/cyclevania",
-      browserPlayable: false,
+      gameUrl:
+        "https://html-classic.itch.zone/html/1086702/index.html?v=1542783020",
+      browserPlayable: true,
       featured: false,
-      releaseDate: "2018-06-01",
+      releaseDate: "2018-04-23",
       status: "released",
     },
     {
@@ -466,7 +508,7 @@ export const useGamesStore = defineStore("games", () => {
       gameUrl: "https://gerald-burke.itch.io/3d-experiment",
       browserPlayable: false,
       featured: false,
-      releaseDate: "2020-03-01",
+      releaseDate: "2020-04-08",
       status: "released",
     },
     {
@@ -482,7 +524,7 @@ export const useGamesStore = defineStore("games", () => {
       gameUrl: "https://gerald-burke.itch.io/galaxus",
       browserPlayable: false,
       featured: false,
-      releaseDate: "2020-07-01",
+      releaseDate: "2017-05-24",
       status: "released",
     },
     {
@@ -492,14 +534,20 @@ export const useGamesStore = defineStore("games", () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A contemplative interactive fiction piece.",
       longDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      tags: ["Interactive Fiction", "Web", "Unity", "Made for Learning", "2D"],
+      tags: [
+        "Interactive Fiction",
+        "Windows",
+        "Unity",
+        "Made for Learning",
+        "2D",
+      ],
       imageUrl: lifeShortImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/life-is-short",
       embedUrl: null,
-      browserPlayable: true,
+      browserPlayable: false,
       featured: false,
-      releaseDate: "2017-04-01",
+      releaseDate: "2017-02-05",
       status: "released",
     },
     {
@@ -513,10 +561,11 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: loversGiftImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/lovers-gift",
-      embedUrl: null,
+      embedUrl:
+        "https://html-classic.itch.zone/html/1194965/WebBuild/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2018-02-14",
+      releaseDate: "2018-12-18",
       status: "released",
     },
     {
@@ -530,9 +579,11 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: midnightManorImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/midnight-manor",
-      browserPlayable: false,
+      embedUrl:
+        "https://html-classic.itch.zone/html/549606/index.html?v=1542792953",
+      browserPlayable: true,
       featured: false,
-      releaseDate: "2019-10-31",
+      releaseDate: "2017-07-31",
       status: "released",
     },
     {
@@ -546,10 +597,10 @@ export const useGamesStore = defineStore("games", () => {
       imageUrl: nsfwImage,
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/nsfw-jam",
-      embedUrl: null,
+      embedUrl: "https://html-classic.itch.zone/html/6877658/index.html",
       browserPlayable: true,
       featured: false,
-      releaseDate: "2022-04-01",
+      releaseDate: "2022-11-23",
       status: "released",
     },
     {
@@ -564,9 +615,9 @@ export const useGamesStore = defineStore("games", () => {
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/say-the-right-thing",
       embedUrl: null,
-      browserPlayable: true,
+      browserPlayable: false,
       featured: false,
-      releaseDate: "2017-02-01",
+      releaseDate: "2017-02-05",
       status: "released",
     },
     {
@@ -579,10 +630,11 @@ export const useGamesStore = defineStore("games", () => {
       tags: ["Action", "Web", "Unity", "Ludum Dare", "2D"],
       imageUrl: antivirusImage,
       githubUrl: "https://arendev.itch.io/tcgd-antivirus",
-      gameUrl: "https://arendev.itch.io/tcgd-antivirus",
-      browserPlayable: false,
+      gameUrl:
+        "https://html-classic.itch.zone/html/1003053/WebBuild/index.html?v=1542788704",
+      browserPlayable: true,
       featured: false,
-      releaseDate: "2018-08-01",
+      releaseDate: "2018-08-13",
       status: "released",
     },
     {
@@ -603,9 +655,9 @@ export const useGamesStore = defineStore("games", () => {
       githubUrl: null,
       gameUrl: "https://gerald-burke.itch.io/the-walls-are-closing-in",
       embedUrl: null,
-      browserPlayable: true,
+      browserPlayable: false,
       featured: false,
-      releaseDate: "2017-01-01",
+      releaseDate: "2017-02-05",
       status: "released",
     },
   ]);
