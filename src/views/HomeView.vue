@@ -119,15 +119,7 @@
                 <span class="post-date">{{
                   formatDate(writing.publishedAt)
                 }}</span>
-                <div class="post-tags">
-                  <span
-                    v-for="tag in writing.tags.slice(0, 2)"
-                    :key="tag"
-                    class="tag"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
+                <span class="post-category">{{ writing.category }}</span>
               </div>
               <h3 class="post-title">
                 <router-link :to="`/writing/${writing.slug}`">
