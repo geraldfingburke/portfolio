@@ -33,7 +33,7 @@ export const useSoftwareStore = defineStore("software", () => {
         "API service powering tarot card reading applications with comprehensive card data and reading algorithms.",
       longDescription:
         "A specialized API that provides tarot card data, reading algorithms, and interpretation services. Features complete card database with imagery, meanings, and context-sensitive interpretations. Designed to power web and mobile tarot reading applications with flexible reading layouts.",
-      technologies: ["FastAPI", "SQLite", "RESTful API", "Data Management"],
+      technologies: ["RESTful API", "Data Management"],
       imageUrl: "/images/plateau-tarot.jpg",
       githubUrl: "https://github.com/geraldfingburke/plateau-tarot",
       demoUrl: "https://plateau-tarot-api.vercel.app",
