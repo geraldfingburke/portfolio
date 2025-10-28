@@ -107,29 +107,38 @@
             :key="writing.id"
             class="post-card card"
           >
-            <div class="post-meta">
-              <span class="post-date">{{
-                formatDate(writing.publishedAt)
-              }}</span>
-              <div class="post-tags">
-                <span
-                  v-for="tag in writing.tags.slice(0, 2)"
-                  :key="tag"
-                  class="tag"
-                >
-                  {{ tag }}
-                </span>
-              </div>
+            <div class="post-image">
+              <img
+                :src="writing.featuredImage"
+                :alt="writing.title"
+                class="featured-img"
+              />
             </div>
-            <h3 class="post-title">
-              <router-link :to="`/writing/${writing.slug}`">
-                {{ writing.title }}
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="post-date">{{
+                  formatDate(writing.publishedAt)
+                }}</span>
+                <div class="post-tags">
+                  <span
+                    v-for="tag in writing.tags.slice(0, 2)"
+                    :key="tag"
+                    class="tag"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+              <h3 class="post-title">
+                <router-link :to="`/writing/${writing.slug}`">
+                  {{ writing.title }}
+                </router-link>
+              </h3>
+              <p class="post-excerpt">{{ writing.excerpt }}</p>
+              <router-link :to="`/writing/${writing.slug}`" class="read-more">
+                Read More →
               </router-link>
-            </h3>
-            <p class="post-excerpt">{{ writing.excerpt }}</p>
-            <router-link :to="`/writing/${writing.slug}`" class="read-more">
-              Read More →
-            </router-link>
+            </div>
           </div>
         </div>
         <div class="text-center mt-4">
@@ -402,6 +411,36 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+}
+
+.post-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-image {
+  overflow: hidden;
+  height: 200px;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover .featured-img {
+  transform: scale(1.05);
+}
+
+.post-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-meta {

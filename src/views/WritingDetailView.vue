@@ -28,7 +28,7 @@
 
           <div class="writing-info">
             <span class="publication"
-              >Published in {{ writing.publication }}</span
+              >Published by {{ writing.publication }}</span
             >
             <a
               v-if="writing.externalUrl"
@@ -36,7 +36,7 @@
               target="_blank"
               class="external-link"
             >
-              Read on Original Site
+              View on Original Site
               <svg
                 width="16"
                 height="16"
@@ -55,32 +55,6 @@
         <article class="writing-content">
           <div class="content-body" v-html="formattedContent"></div>
         </article>
-
-        <!-- Author Info -->
-        <div class="author-section">
-          <div class="author-info">
-            <div class="author-avatar">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"
-                />
-              </svg>
-            </div>
-            <div class="author-details">
-              <h4>Gerald Burke</h4>
-              <p>
-                Writer, educator, and software developer in Northeast Tennessee.
-                Published in NoSleep Podcast, SUPERJUMP, and various other
-                publications.
-              </p>
-            </div>
-          </div>
-        </div>
 
         <!-- Related Writing -->
         <section v-if="relatedWritings.length > 0" class="related-section">
@@ -140,7 +114,7 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useWritingStore } from "@/stores/writing";
 
@@ -155,11 +129,37 @@ export default {
   setup(props) {
     const route = useRoute();
     const writingStore = useWritingStore();
+    const htmlContent = ref("");
 
     // Get the current writing piece
     const writing = computed(() =>
       writingStore.getWritingBySlug(props.slug || route.params.slug)
     );
+
+    // Load HTML content from file
+    const loadHtmlContent = async () => {
+      if (!writing.value?.htmlFile) {
+        htmlContent.value = "";
+        return;
+      }
+
+      try {
+        const response = await fetch(writing.value.htmlFile);
+        htmlContent.value = await response.text();
+      } catch (error) {
+        console.error("Error loading HTML content:", error);
+        htmlContent.value = "<p>Error loading content.</p>";
+      }
+    };
+
+    // Load content when component mounts or writing changes
+    onMounted(() => {
+      loadHtmlContent();
+    });
+
+    watch(writing, () => {
+      loadHtmlContent();
+    });
 
     // Get related writings (same category or tags)
     const relatedWritings = computed(() => {
@@ -175,20 +175,8 @@ export default {
         .slice(0, 3);
     });
 
-    // Format content with basic markdown-like formatting
-    const formattedContent = computed(() => {
-      if (!writing.value?.content) return "";
-
-      return writing.value.content
-        .replace(/\n\n/g, "</p><p>")
-        .replace(/^(.+)$/, "<p>$1</p>")
-        .replace(/^# (.+)$/gm, "<h1>$1</h1>")
-        .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-        .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-        .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-        .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-        .replace(/\n/g, "<br>");
-    });
+    // Use loaded HTML content instead of formatting markdown
+    const formattedContent = computed(() => htmlContent.value);
 
     const formatDate = (dateString) => {
       const [year, month, day] = dateString.split("-");
@@ -326,7 +314,7 @@ export default {
 }
 
 .content-body {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.8;
   font-size: 1.1rem;
 }
@@ -335,25 +323,29 @@ export default {
   color: var(--text-primary);
   font-size: 2rem;
   font-weight: 600;
-  margin: 2rem 0 1rem;
+  margin: 2.5rem 0 1.25rem;
+  line-height: 1.3;
 }
 
 .content-body :deep(h2) {
   color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 1.5rem 0 0.75rem;
+  margin: 2rem 0 1rem;
+  line-height: 1.4;
 }
 
 .content-body :deep(h3) {
   color: var(--text-primary);
   font-size: 1.25rem;
   font-weight: 600;
-  margin: 1.25rem 0 0.5rem;
+  margin: 1.75rem 0 0.75rem;
+  line-height: 1.4;
 }
 
 .content-body :deep(p) {
   margin-bottom: 1.5rem;
+  text-align: justify;
 }
 
 .content-body :deep(em) {
@@ -366,43 +358,88 @@ export default {
   color: var(--text-primary);
 }
 
-/* Author Section */
-.author-section {
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  padding: 2rem;
+.content-body :deep(a) {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.content-body :deep(a:hover) {
+  border-bottom-color: var(--accent-blue);
+}
+
+.content-body :deep(blockquote) {
+  margin: 2.5rem auto;
+  padding: 1.5rem 2rem;
+  max-width: 600px;
   background: var(--bg-secondary);
+  border-left: 4px solid var(--accent-blue);
   border-radius: 0.5rem;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content-body :deep(blockquote p) {
+  margin: 0;
+  text-align: left;
+}
+
+.content-body :deep(blockquote p:not(:last-child)) {
+  margin-bottom: 1rem;
+}
+
+.content-body :deep(ul),
+.content-body :deep(ol) {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.content-body :deep(li) {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.content-body :deep(code) {
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.95em;
+  color: var(--accent-blue);
+}
+
+.content-body :deep(pre) {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
   border: 1px solid var(--border-primary);
 }
 
-.author-info {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.author-avatar {
-  flex-shrink: 0;
-}
-
-.author-avatar svg {
-  color: var(--text-tertiary);
-  background: var(--bg-tertiary);
-  border-radius: 50%;
-  padding: 0.5rem;
-}
-
-.author-details h4 {
+.content-body :deep(pre code) {
+  background: none;
+  padding: 0;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
 }
 
-.author-details p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+.content-body :deep(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.content-body :deep(hr) {
+  border: none;
+  border-top: 2px solid var(--border-primary);
+  margin: 3rem 0;
 }
 
 /* Related Writing */

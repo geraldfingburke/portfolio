@@ -54,7 +54,7 @@ import img4 from "@/assets/MyJourney/college-1.jpg";
 import img5 from "@/assets/MyJourney/trigamedev.jpg";
 import img6 from "@/assets/MyJourney/college-2.jpg";
 import img7 from "@/assets/MyJourney/bis.jpg";
-import img8 from "@/assets/MyJourney/professor.jpg";
+import img8 from "@/assets/MyJourney/professor.png";
 import img9 from "@/assets/MyJourney/grind.jpg";
 
 const timelineEvents = ref([

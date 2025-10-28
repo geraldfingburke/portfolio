@@ -20,26 +20,11 @@
             class="featured-writing card"
           >
             <div class="writing-image">
-              <div class="image-placeholder">
-                <svg
-                  width="100%"
-                  height="200"
-                  viewBox="0 0 400 200"
-                  fill="none"
-                >
-                  <rect width="400" height="200" fill="var(--accent-blue)" />
-                  <text
-                    x="200"
-                    y="100"
-                    text-anchor="middle"
-                    fill="white"
-                    font-size="16"
-                    font-weight="600"
-                  >
-                    {{ writing.title }}
-                  </text>
-                </svg>
-              </div>
+              <img
+                :src="writing.featuredImage"
+                :alt="writing.title"
+                class="featured-img"
+              />
             </div>
             <div class="writing-content">
               <div class="writing-meta">
@@ -365,14 +350,17 @@ export default {
 .writing-image {
   overflow: hidden;
   border-radius: 0.5rem 0.5rem 0 0;
+  height: 250px;
 }
 
-.image-placeholder {
+.featured-img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.featured-writing:hover .image-placeholder {
+.featured-writing:hover .featured-img {
   transform: scale(1.05);
 }
 
