@@ -20,12 +20,6 @@
           <h1 class="writing-title">{{ writing.title }}</h1>
           <p class="writing-excerpt">{{ writing.excerpt }}</p>
 
-          <div class="writing-tags">
-            <span v-for="tag in writing.tags" :key="tag" class="tag">
-              {{ tag }}
-            </span>
-          </div>
-
           <div class="writing-info">
             <span class="publication"
               >Published by {{ writing.publication }}</span
@@ -161,17 +155,13 @@ export default {
       loadHtmlContent();
     });
 
-    // Get related writings (same category or tags)
+    // Get related writings (same category)
     const relatedWritings = computed(() => {
       if (!writing.value) return [];
 
       return writingStore.publishedWritings
         .filter((w) => w.id !== writing.value.id)
-        .filter(
-          (w) =>
-            w.category === writing.value.category ||
-            w.tags.some((tag) => writing.value.tags.includes(tag))
-        )
+        .filter((w) => w.category === writing.value.category)
         .slice(0, 3);
     });
 
