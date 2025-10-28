@@ -6,8 +6,8 @@
         <div class="footer-section">
           <h3>Gerald Burke</h3>
           <p>
-            Writer, educator, and developer creating digital stories and
-            educational tools from the Appalachian Mountains.
+            Writer, educator, and developer. Illin and chillin, though not
+            always in that order, in the Appalachian Mountains.
           </p>
           <div class="social-links">
             <a

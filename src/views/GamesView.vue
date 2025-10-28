@@ -5,8 +5,8 @@
       <header class="page-header">
         <h1 class="page-title">Games</h1>
         <p class="page-description">
-          A collection of games showcasing creativity in interactive
-          entertainment, from full releases to experimental jam projects.
+          All kinds of games. You can play them. You can eat them. You can show
+          them to your friends and make fun of me.
         </p>
       </header>
 

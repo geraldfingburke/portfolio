@@ -5,8 +5,8 @@
       <header class="page-header">
         <h1 class="page-title">Writing</h1>
         <p class="page-description">
-          Published works including journalism, fiction, poetry, and essays on
-          gaming, technology, and creative expression.
+          Stuff I have written. Some of it is good. Some of it is technically
+          the written word.
         </p>
       </header>
 
@@ -31,16 +31,7 @@
                 <span class="writing-date">{{
                   formatDate(writing.publishedAt)
                 }}</span>
-                <div class="writing-tags">
-                  <span
-                    v-for="tag in writing.tags.slice(0, 2)"
-                    :key="tag"
-                    class="tag"
-                    @click="setTagFilter(tag)"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
+                <span class="writing-category">{{ writing.category }}</span>
               </div>
               <h3 class="writing-title">
                 <router-link
@@ -71,55 +62,31 @@
       </section>
 
       <!-- Filter Section -->
-      <section class="filter-section">
-        <div class="filters">
-          <h3>Filter by:</h3>
-          <div class="filter-groups">
-            <div class="filter-group">
-              <span class="filter-label">Category:</span>
-              <div class="filter-options">
-                <button
-                  class="filter-btn"
-                  :class="{ active: selectedCategory === null }"
-                  @click="setCategoryFilter(null)"
-                >
-                  All
-                </button>
-                <button
-                  v-for="category in allCategories"
-                  :key="category"
-                  class="filter-btn"
-                  :class="{ active: selectedCategory === category }"
-                  @click="setCategoryFilter(category)"
-                >
-                  {{ category }}
-                </button>
-              </div>
-            </div>
-            <div class="filter-group">
-              <span class="filter-label">Tags:</span>
-              <div class="filter-options">
-                <button
-                  class="filter-btn"
-                  :class="{ active: selectedTag === null }"
-                  @click="setTagFilter(null)"
-                >
-                  All
-                </button>
-                <button
-                  v-for="tag in allTags.slice(0, 6)"
-                  :key="tag"
-                  class="filter-btn"
-                  :class="{ active: selectedTag === tag }"
-                  @click="setTagFilter(tag)"
-                >
-                  {{ tag }}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="filters">
+        <button
+          class="filter-btn"
+          :class="{ active: activeFilter === 'all' }"
+          @click="setFilter('all')"
+        >
+          All Writing ({{ getFilterCount("all") }})
+        </button>
+        <button
+          class="filter-btn"
+          :class="{ active: activeFilter === 'featured' }"
+          @click="setFilter('featured')"
+        >
+          Featured ({{ getFilterCount("featured") }})
+        </button>
+        <button
+          v-for="category in allCategories"
+          :key="category"
+          class="filter-btn"
+          :class="{ active: activeFilter === category }"
+          @click="setFilter(category)"
+        >
+          {{ category }} ({{ getFilterCount(category) }})
+        </button>
+      </div>
 
       <!-- Writing List -->
       <section class="writings-list">
@@ -130,6 +97,13 @@
             :key="writing.id"
             class="writing-card card"
           >
+            <div class="writing-image">
+              <img
+                :src="writing.featuredImage"
+                :alt="writing.title"
+                class="featured-img"
+              />
+            </div>
             <div class="writing-content">
               <div class="writing-meta">
                 <span class="writing-date">{{
@@ -148,16 +122,6 @@
                 </router-link>
               </h3>
               <p class="writing-excerpt">{{ writing.excerpt }}</p>
-              <div class="writing-tags">
-                <span
-                  v-for="tag in writing.tags"
-                  :key="tag"
-                  class="tag"
-                  @click="setTagFilter(tag)"
-                >
-                  {{ tag }}
-                </span>
-              </div>
               <div class="writing-footer">
                 <span class="publication">{{ writing.publication }}</span>
                 <div class="writing-actions">
@@ -224,51 +188,51 @@ export default {
   name: "WritingView",
   setup() {
     const writingStore = useWritingStore();
-    const selectedCategory = ref(null);
-    const selectedTag = ref(null);
+    const activeFilter = ref("all");
 
     // Computed properties
     const featuredWritings = computed(() => writingStore.featuredWritings);
-    const allTags = computed(() => writingStore.allTags);
     const allCategories = computed(() => writingStore.allCategories);
 
     const filteredWritings = computed(() => {
-      let writings = writingStore.publishedWritings;
-
-      if (selectedCategory.value) {
-        writings = writings.filter(
-          (writing) => writing.category === selectedCategory.value
+      if (activeFilter.value === "all") {
+        return [...writingStore.publishedWritings].sort(
+          (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
         );
       }
 
-      if (selectedTag.value) {
-        writings = writings.filter((writing) =>
-          writing.tags.includes(selectedTag.value)
+      if (activeFilter.value === "featured") {
+        return [...writingStore.featuredWritings].sort(
+          (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
         );
       }
 
-      return writings.sort(
+      return [...writingStore.writingsByCategory(activeFilter.value)].sort(
         (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
       );
     });
 
     // Methods
-    const setCategoryFilter = (category) => {
-      selectedCategory.value = category;
-      selectedTag.value = null; // Clear tag filter when setting category
+    const setFilter = (filter) => {
+      activeFilter.value = filter;
     };
 
-    const setTagFilter = (tag) => {
-      selectedTag.value = tag;
-      selectedCategory.value = null; // Clear category filter when setting tag
+    const getFilterCount = (filter) => {
+      if (filter === "all") {
+        return writingStore.publishedWritings.length;
+      }
+      if (filter === "featured") {
+        return writingStore.featuredWritings.length;
+      }
+      return writingStore.writingsByCategory(filter).length;
     };
 
     const clearFilters = () => {
-      selectedCategory.value = null;
-      selectedTag.value = null;
+      activeFilter.value = "all";
     };
 
     const formatDate = (dateString) => {
+      if (!dateString) return "";
       const [year, month, day] = dateString.split("-");
       return new Date(year, month - 1, day).toLocaleDateString("en-US", {
         year: "numeric",
@@ -279,13 +243,11 @@ export default {
 
     return {
       featuredWritings,
-      allTags,
       allCategories,
       filteredWritings,
-      selectedCategory,
-      selectedTag,
-      setCategoryFilter,
-      setTagFilter,
+      activeFilter,
+      setFilter,
+      getFilterCount,
       clearFilters,
       formatDate,
     };
@@ -469,6 +431,14 @@ export default {
 }
 
 /* Filter Section */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
 .filter-section {
   margin-bottom: 3rem;
 }

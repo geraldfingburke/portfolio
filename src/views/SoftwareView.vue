@@ -5,8 +5,11 @@
       <header class="page-header">
         <h1 class="page-title">Software</h1>
         <p class="page-description">
-          Professional software development projects including enterprise
-          applications, web APIs, cloud infrastructure, and government systems.
+          FOSS stuff I've worked on and shared with all y'all. If you want to
+          know about my professional stuff, ask me in person. I've primarily
+          been a contributor on large teams working on proprietary enterprise
+          software, and it wouldn't be appropriate (or, likely, legal) to show
+          that stuff here.
         </p>
       </header>
 
