@@ -34,3 +34,10 @@ jobs:
           local-dir: ./dist/
           server-dir: ./
           dangerous-clean-slate: false
+          timeout: 300000
+          log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.DS_Store
