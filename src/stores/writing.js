@@ -167,9 +167,9 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
+      publishedAt: "2023-04-19",
       publication: "Me on Medium",
-      externalUrl: "",
+      externalUrl: "https://burkeg.medium.com/her-221107230581",
     },
     {
       id: 10,
@@ -182,9 +182,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Games",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2019-11-24",
+      publication: "The Hidden Pixel (Defunct)",
+      externalUrl:
+        "https://bio.site/TheHiddenPixel?fbclid=PAZXh0bgNhZW0CMTEAAacFp4pKbeB9unoQjw5LgMW6gzIiM8HHE2cH-7xczCRMaCRx_uzTZlfuK0P_UQ_aem__g7zdCeP4kqNI0yc4OZiSA",
     },
     {
       id: 11,
@@ -198,9 +199,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Rant",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2021-01-26",
+      publication: "Me on Medium",
+      externalUrl:
+        "https://burkeg.medium.com/i-dont-care-who-the-president-is-and-neither-should-you-32d5f6cab4b2",
     },
     {
       id: 12,
@@ -214,9 +216,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Games",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2022-03-18",
+      publication: "SUPERJUMP Magazine",
+      externalUrl:
+        "https://medium.com/super-jump/indies-for-ukraine-how-a-niche-internet-community-raised-almost-5m-for-crisis-intervention-f8f34858a1f0",
     },
     {
       id: 13,
@@ -229,9 +232,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2023-03-29",
+      publication: "Me on Medium",
+      externalUrl:
+        "https://burkeg.medium.com/light-betrays-the-black-beneath-c1959a45aa9f",
     },
     {
       id: 14,
@@ -245,9 +249,9 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Rant",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2021-01-30",
+      publication: "Me on Medium",
+      externalUrl: "https://burkeg.medium.com/potential-2d85f1004919",
     },
     {
       id: 15,
@@ -261,9 +265,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2016-03-05",
+      publication: "Me on Writer's Cafe",
+      externalUrl:
+        "https://www.writerscafe.org/writing/geraldfingburke/1733416/",
     },
     {
       id: 16,
@@ -277,9 +282,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Rant",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2020-07-27",
+      publication: "Me on Medium",
+      externalUrl:
+        "https://burkeg.medium.com/a-member-of-the-opposition-asked-me-so-you-want-to-kill-babies-93f824560624",
     },
     {
       id: 17,
@@ -293,9 +299,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2015-01-17",
+      publication: "Me on Writer's Cafe",
+      externalUrl:
+        "https://www.writerscafe.org/writing/geraldfingburke/1472445/",
     },
     {
       id: 18,
@@ -309,9 +316,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Horror",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2023-03-20",
+      publication: "Creepy",
+      externalUrl:
+        "https://www.patreon.com/posts/3-20-2023-there-80282357?utm_medium=social&utm_source=twitter&utm_campaign=postshare_fan&utm_content=join_link",
     },
     {
       id: 19,
@@ -325,9 +333,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2015-01-21",
+      publication: "Me on Writer's Cafe",
+      externalUrl:
+        "https://www.writerscafe.org/writing/geraldfingburke/1474533/",
     },
     {
       id: 20,
@@ -341,9 +350,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Horror",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2023-08-09",
+      publication: "Creepy",
+      externalUrl:
+        "https://www.patreon.com/posts/8-9-2023-up-87430974?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_fan&utm_content=web_share",
     },
     {
       id: 21,
@@ -357,9 +367,10 @@ export const useWritingStore = defineStore("writing", () => {
       category: "Bad Poetry",
       featured: false,
       published: true,
-      publishedAt: "",
-      publication: "",
-      externalUrl: "",
+      publishedAt: "2015-01-27",
+      publication: "Me on Writer's Cafe",
+      externalUrl:
+        "https://www.writerscafe.org/writing/geraldfingburke/1478184/",
     },
   ]);
 
