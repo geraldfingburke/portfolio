@@ -158,11 +158,11 @@
                   </svg>
                 </a>
                 <a
-                  v-if="project.demoUrl"
-                  :href="project.demoUrl"
+                  v-if="project.appUrl"
+                  :href="project.appUrl"
                   target="_blank"
                   class="software-link"
-                  title="Live Demo"
+                  title="Try it now!"
                 >
                   <svg
                     width="20"

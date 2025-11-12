@@ -28,8 +28,8 @@
 
           <div class="software-actions">
             <a
-              v-if="software.demoUrl"
-              :href="software.demoUrl"
+              v-if="software.appUrl"
+              :href="software.appUrl"
               target="_blank"
               class="btn btn-primary"
             >
@@ -43,7 +43,7 @@
                   d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
                 />
               </svg>
-              Live Demo
+              Try it now!
             </a>
             <a
               v-if="software.githubUrl"
@@ -139,14 +139,14 @@
 
             <!-- Links -->
             <div
-              v-if="software.demoUrl || software.githubUrl"
+              v-if="software.appUrl || software.githubUrl"
               class="sidebar-card"
             >
               <h3>Links</h3>
               <div class="links-list">
                 <a
-                  v-if="software.demoUrl"
-                  :href="software.demoUrl"
+                  v-if="software.appUrl"
+                  :href="software.appUrl"
                   target="_blank"
                   class="link-item"
                 >
@@ -160,7 +160,7 @@
                       d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
                     />
                   </svg>
-                  Live Demo
+                  Try it now!
                 </a>
                 <a
                   v-if="software.githubUrl"
