@@ -242,6 +242,7 @@ export default {
     };
 
     const formatDate = (dateString) => {
+      if (!dateString) return "Recent"; // Handle undefined/null dates
       const [year, month, day] = dateString.split("-");
       return new Date(year, month - 1, day).toLocaleDateString("en-US", {
         year: "numeric",

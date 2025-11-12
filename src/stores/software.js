@@ -16,6 +16,7 @@ export const useSoftwareStore = defineStore("software", () => {
       githubUrl: "https://github.com/geraldfingburke/dossier",
       featured: true,
       category: "Applications",
+      startDate: "2025-10-31",
       status: "completed",
     },
     {
