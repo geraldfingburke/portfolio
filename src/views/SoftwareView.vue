@@ -55,26 +55,11 @@
           class="software-card card"
         >
           <div class="software-image">
-            <div class="image-placeholder">
-              <svg width="100%" height="250" viewBox="0 0 400 250" fill="none">
-                <rect
-                  width="400"
-                  height="250"
-                  fill="var(--bg-tertiary)"
-                  stroke="var(--border-primary)"
-                />
-                <text
-                  x="200"
-                  y="125"
-                  text-anchor="middle"
-                  dominant-baseline="middle"
-                  fill="var(--text-secondary)"
-                  font-size="16"
-                >
-                  {{ project.title }}
-                </text>
-              </svg>
-            </div>
+            <img
+              :src="project.imageUrl"
+              :alt="project.title"
+              class="project-image"
+            />
             <div class="software-overlay">
               <div class="overlay-actions">
                 <router-link
@@ -342,15 +327,17 @@ export default {
   margin-bottom: 1.5rem;
   overflow: hidden;
   border-radius: 0.5rem;
+  height: 250px;
 }
 
-.image-placeholder {
+.project-image {
   width: 100%;
-  background: var(--bg-tertiary);
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.software-card:hover .image-placeholder {
+.software-card:hover .project-image {
   transform: scale(1.05);
 }
 

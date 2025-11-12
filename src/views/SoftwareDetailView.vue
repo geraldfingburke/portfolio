@@ -68,26 +68,11 @@
 
         <!-- Software Image -->
         <div class="software-image">
-          <div class="image-placeholder">
-            <svg width="100%" height="400" viewBox="0 0 800 400" fill="none">
-              <rect
-                width="800"
-                height="400"
-                fill="var(--bg-tertiary)"
-                stroke="var(--border-primary)"
-              />
-              <text
-                x="400"
-                y="200"
-                text-anchor="middle"
-                dominant-baseline="middle"
-                fill="var(--text-secondary)"
-                font-size="24"
-              >
-                {{ software.title }}
-              </text>
-            </svg>
-          </div>
+          <img
+            :src="software.imageUrl"
+            :alt="software.title"
+            class="software-main-image"
+          />
         </div>
 
         <!-- Software Info Grid -->
@@ -341,11 +326,13 @@ export default {
   margin-bottom: 3rem;
   border-radius: 0.5rem;
   overflow: hidden;
+  height: 400px;
 }
 
-.image-placeholder {
+.software-main-image {
   width: 100%;
-  background: var(--bg-tertiary);
+  height: 100%;
+  object-fit: cover;
 }
 
 .software-info-grid {
