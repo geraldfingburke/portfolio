@@ -1,6 +1,11 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
+// Import software images
+import dossierImage from "@/assets/Software/dossier.jpg";
+import plateauTarotImage from "@/assets/Software/plateau-tarot.jpg";
+import simpleLeaderboardImage from "@/assets/Software/simple-leaderboard.jpg";
+
 export const useSoftwareStore = defineStore("software", () => {
   // State - Gerald Burke's Software Development Projects
   const software = ref([
@@ -12,7 +17,7 @@ export const useSoftwareStore = defineStore("software", () => {
       longDescription:
         "A full-stack leaderboard management system featuring a RESTful API built with modern backend technologies and a responsive front-end interface. Includes user authentication, score submission validation, and real-time updates. Designed for easy integration with games and applications.",
       technologies: ["Go", "Vue.js", "PostgreSQL", "Docker", "Ollama"],
-      imageUrl: require("@/assets/Software/dossier.jpg"),
+      imageUrl: dossierImage,
       githubUrl: "https://github.com/geraldfingburke/dossier",
       featured: true,
       category: "Applications",
@@ -27,7 +32,7 @@ export const useSoftwareStore = defineStore("software", () => {
       longDescription:
         "A specialized API that provides tarot card data, reading algorithms, and interpretation services. Features complete card database with imagery, meanings, and context-sensitive interpretations. Designed to power web and mobile tarot reading applications with flexible reading layouts.",
       technologies: ["RESTful API", "Data Management"],
-      imageUrl: require("@/assets/Software/plateau-tarot.jpg"),
+      imageUrl: plateauTarotImage,
       githubUrl: "https://github.com/geraldfingburke/plateau-tarot",
       appUrl: "https://plateau-tarot-api.vercel.app",
       featured: false,
@@ -49,7 +54,7 @@ export const useSoftwareStore = defineStore("software", () => {
         "RESTful API",
         "Authentication",
       ],
-      imageUrl: require("@/assets/Software/simple-leaderboard.jpg"),
+      imageUrl: simpleLeaderboardImage,
       githubUrl: "https://github.com/geraldfingburke/simple-leaderboard",
       appUrl: "https://simple-leaderboard-demo.herokuapp.com",
       featured: true,
