@@ -49,7 +49,7 @@ export const useSoftwareStore = defineStore("software", () => {
         "RESTful API",
         "Authentication",
       ],
-      imageUrl: require("@/assets/Software/leaderboard-api.jpg"),
+      imageUrl: require("@/assets/Software/simple-leaderboard.jpg"),
       githubUrl: "https://github.com/geraldfingburke/simple-leaderboard",
       appUrl: "https://simple-leaderboard-demo.herokuapp.com",
       featured: true,
