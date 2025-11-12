@@ -97,6 +97,62 @@
       </div>
     </section>
 
+    <!-- Featured Software Section -->
+    <section class="featured-software">
+      <div class="container">
+        <h2 class="section-title">Featured Software</h2>
+        <div class="software-grid">
+          <div
+            v-for="project in featuredSoftware"
+            :key="project.id"
+            class="software-card card"
+          >
+            <div class="software-image">
+              <img
+                :src="project.imageUrl"
+                :alt="project.title"
+                class="software-thumbnail"
+              />
+            </div>
+            <div class="software-content">
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+              <div class="software-technologies">
+                <span
+                  v-for="tech in project.technologies.slice(0, 3)"
+                  :key="tech"
+                  class="tech-item"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+              <div class="software-actions">
+                <router-link
+                  :to="`/software/${project.id}`"
+                  class="btn btn-primary btn-sm"
+                >
+                  View Details
+                </router-link>
+                <a
+                  v-if="project.appUrl"
+                  :href="project.appUrl"
+                  target="_blank"
+                  class="btn btn-outline btn-sm"
+                >
+                  Try it now!
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <router-link to="/software" class="btn btn-outline">
+            View All Software
+          </router-link>
+        </div>
+      </div>
+    </section>
+
     <!-- Recent Writing Section -->
     <section class="recent-posts">
       <div class="container">
@@ -310,6 +366,7 @@ export default {
 
 /* Sections */
 .featured-projects,
+.featured-software,
 .recent-posts,
 .skills {
   padding: 4rem 0;
@@ -395,6 +452,72 @@ export default {
 .btn-sm {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
+}
+
+/* Software Grid */
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.software-card {
+  overflow: hidden;
+}
+
+.software-image {
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  height: 200px;
+}
+
+.software-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.software-card:hover .software-thumbnail {
+  transform: scale(1.05);
+}
+
+.software-content {
+  padding: 1.5rem;
+}
+
+.software-content h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.software-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.software-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-item {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.software-actions {
+  display: flex;
+  gap: 1rem;
 }
 
 /* Posts Grid */
