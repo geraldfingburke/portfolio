@@ -6,6 +6,36 @@ export const useSoftwareStore = defineStore("software", () => {
   const software = ref([
     {
       id: 1,
+      title: "Dossier",
+      description:
+        "A containerized, AI powered RSS digest that sends personalized summaries of your favorite feeds to your email",
+      longDescription:
+        "A full-stack leaderboard management system featuring a RESTful API built with modern backend technologies and a responsive front-end interface. Includes user authentication, score submission validation, and real-time updates. Designed for easy integration with games and applications.",
+      technologies: ["Go", "Vue.js", "PostgreSQL", "Docker", "Ollama"],
+      imageUrl: "/assets/Software/dossier.jpg",
+      githubUrl: "https://github.com/geraldfingburke/dossier",
+      featured: true,
+      category: "Applications",
+      status: "completed",
+    },
+    {
+      id: 2,
+      title: "Plateau Tarot API",
+      description:
+        "API service powering tarot card reading applications with comprehensive card data and reading algorithms.",
+      longDescription:
+        "A specialized API that provides tarot card data, reading algorithms, and interpretation services. Features complete card database with imagery, meanings, and context-sensitive interpretations. Designed to power web and mobile tarot reading applications with flexible reading layouts.",
+      technologies: ["RESTful API", "Data Management"],
+      imageUrl: "/images/plateau-tarot.jpg",
+      githubUrl: "https://github.com/geraldfingburke/plateau-tarot",
+      demoUrl: "https://plateau-tarot-api.vercel.app",
+      featured: false,
+      category: "Web APIs",
+      startDate: "2022-03-01",
+      status: "completed",
+    },
+    {
+      id: 3,
       title: "Simple Leaderboard API",
       description:
         "RESTful API service for managing game leaderboards with front-end interface and comprehensive documentation.",
@@ -24,22 +54,6 @@ export const useSoftwareStore = defineStore("software", () => {
       featured: true,
       category: "Web APIs",
       startDate: "2022-06-01",
-      status: "completed",
-    },
-    {
-      id: 2,
-      title: "Plateau Tarot API",
-      description:
-        "API service powering tarot card reading applications with comprehensive card data and reading algorithms.",
-      longDescription:
-        "A specialized API that provides tarot card data, reading algorithms, and interpretation services. Features complete card database with imagery, meanings, and context-sensitive interpretations. Designed to power web and mobile tarot reading applications with flexible reading layouts.",
-      technologies: ["RESTful API", "Data Management"],
-      imageUrl: "/images/plateau-tarot.jpg",
-      githubUrl: "https://github.com/geraldfingburke/plateau-tarot",
-      demoUrl: "https://plateau-tarot-api.vercel.app",
-      featured: false,
-      category: "Web APIs",
-      startDate: "2022-03-01",
       status: "completed",
     },
   ]);
